@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Copyright (c) 2012, SmiteWorks USA LLC -->
+<root version="2.8" ccversion="2.8.1.A">
+  <character>
+    <actionpoints type="number">1</actionpoints>
+    <attacks>
+      <base>
+        <total type="number">0</total>
+      </base>
+      <melee>
+        <misc type="number">0</misc>
+        <temporary type="number">0</temporary>
+        <total type="number">0</total>
+      </melee>
+      <ranged>
+        <misc type="number">0</misc>
+        <temporary type="number">0</temporary>
+        <total type="number">0</total>
+      </ranged>
+    </attacks>
+    <meleemodifier type="number"/>
+    <powerfocus>
+      <implement>
+        <order type="number">0</order>
+      </implement>
+      <weapon>
+        <order type="number">0</order>
+      </weapon>
+    </powerfocus>
+    <powermode type="string">standard</powermode>
+    <preparationmode type="number">0</preparationmode>
+    <rangedmodifier type="number"/>
+    <passiveinsight type="number"/>
+    <passiveperception type="number"/>
+    <age type="string"/>
+    <alignment type="string"/>
+    <weight type="string"/>
+    <appearance type="string"/>
+    <class>
+      <base type="string"/>
+      <paragon type="string"/>
+      <epic type="string"/>
+    </class>
+    <deity/>
+    <encumbrance>
+      <armorcheckpenalty type="number"/>
+      <heavyarmor type="number"/>
+      <load       type="number"/>
+      <normalload type="number"/>
+      <heavyload  type="number"/>
+      <dragload   type="number"/>
+    </encumbrance>
+    <exp type="number"/>
+    <expneeded type="number"/>
+    <gender type="string"/>
+    <height type="string"/>
+    <hp>
+      <total type="number"/>
+      <surgemodifier type="number"/>
+      <bloodied type="number"/>
+      <surgesmax type="number"/>
+      <surge type="number"/>
+      <surgesused type="number">0</surgesused>
+      <temporary type="number">0</temporary>
+      <wounds type="number">0</wounds>
+      <faileddeathsaves type="number">0</faileddeathsaves>
+      <maxdeathsaves type="number"/>
+      <secondwind type="number"/>
+    </hp>
+    <initiative>
+      <misc type="number"/>
+      <total type="number"/>
+      <temporary type="number"/>
+    </initiative>
+    <level type="number"/>
+    <levelbonus type="number"/>
+    <senses type="string"/>
+    <name type="string"/>
+    <notes type="string"/>
+    <proficiencyarmor/>
+    <race type="string"/>
+    <size type="string"/>
+    <speed>
+      <base type="number"/>
+      <armor type="number"/>
+      <misc type="number"/>
+      <temporary type="number">0</temporary>
+      <final type="number"/>
+    </speed>
+    <abilities/>
+    <coins/>
+    <defenses>
+      <save>
+        <base type="number">0</base>
+        <misc type="number">0</misc>
+        <temporary type="number">0</temporary>
+        <total type="number">0</total>
+      </save>
+      <special type="string"/>
+    </defenses>
+    <skilllist/>
+    <powers />
+    <proficiencyweapon/>
+    <specialabilitylist/>
+    <weaponlist/>
+    <featlist/>
+    <languagelist/>
+    <inventorylist/>
+  </character>
+</root>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2012, SmiteWorks USA LLC -->
+<spellset>
+  <availablelevel0 type="number">0</availablelevel0>
+  <availablelevel1 type="number">0</availablelevel1>
+  <availablelevel2 type="number">0</availablelevel2>
+  <availablelevel3 type="number">0</availablelevel3>
+  <availablelevel4 type="number">0</availablelevel4>
+  <availablelevel5 type="number">0</availablelevel5>
+  <availablelevel6 type="number">0</availablelevel6>
+  <availablelevel7 type="number">0</availablelevel7>
+  <availablelevel8 type="number">0</availablelevel8>
+  <availablelevel9 type="number">0</availablelevel9>
+  <cl type="number">0</cl>
+  <dc>
+    <ability type="string"/>
+    <abilitymod type="number">0</abilitymod>
+    <misc type="number">0</misc>
+    <total type="number">0</total>
+  </dc>
+  <label type="string"/>
+  <levels>
+    <level0>
+      <level type="number">0</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level0>
+    <level1>
+      <level type="number">1</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level1>
+    <level2>
+      <level type="number">2</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level2>
+    <level3>
+      <level type="number">3</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level3>
+    <level4>
+      <level type="number">4</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level4>
+    <level5>
+      <level type="number">5</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level5>
+    <level6>
+      <level type="number">6</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level6>
+    <level7>
+      <level type="number">7</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level7>
+    <level8>
+      <level type="number">8</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level8>
+    <level9>
+      <level type="number">9</level>
+      <maxprepared type="number">0</maxprepared>
+      <spells>
+      </spells>
+      <totalcast type="number">0</totalcast>
+      <totalprepared type="number">0</totalprepared>
+    </level9>
+  </levels>
+  <points type="number">0</points>
+  <pointsused type="number">0</pointsused>
+  <sp type="number">0</sp>
+  <parse type="number">1</parse>
+</spellset>

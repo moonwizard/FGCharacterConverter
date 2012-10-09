@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Copyright (c) 2012, SmiteWorks USA LLC -->
+<root version="2.8" ccversion="2.8.1.A">
+  <character>
+    <abilities>
+      <charisma>
+        <bonus type="number"/>
+        <bonusmodifier type="number"/>
+        <damage type="number"/>
+        <score type="number"/>
+      </charisma>
+      <constitution>
+        <bonus type="number"/>
+        <bonusmodifier type="number"/>
+        <damage type="number"/>
+        <score type="number"/>
+      </constitution>
+      <dexterity>
+        <bonus type="number"/>
+        <bonusmodifier type="number"/>
+        <damage type="number"/>
+        <score type="number"/>
+      </dexterity>
+      <intelligence>
+        <bonus type="number"/>
+        <bonusmodifier type="number"/>
+        <damage type="number"/>
+        <score type="number"/>
+      </intelligence>
+      <strength>
+        <bonus type="number"/>
+        <bonusmodifier type="number"/>
+        <damage type="number"/>
+        <score type="number"/>
+      </strength>
+      <wisdom>
+        <bonus type="number"/>
+        <bonusmodifier type="number"/>
+        <damage type="number"/>
+        <score type="number"/>
+      </wisdom>
+    </abilities>
+    <ac>
+      <sources>
+        <abilitymod type="number"/>
+        <armor type="number"/>
+        <deflection type="number"/>
+        <misc type="number">0</misc>
+        <naturalarmor type="number"/>
+        <shield type="number"/>
+        <size type="number"/>
+        <temporary type="number"/>
+      </sources>
+      <totals>
+        <cmd type="number"/>
+        <flatfooted type="number"/>
+        <general type="number"/>
+        <touch type="number"/>
+      </totals>
+    </ac>
+    <appearance type="string"/>
+    <age type="string"/>
+    <alignment type="string"/>
+    <attackbonus>
+      <base type="number"/>
+      <grapple>
+        <abilitymod type="number"/>
+        <misc type="number"/>
+        <size type="number"/>
+        <temporary type="number"/>
+        <total type="number"/>
+      </grapple>
+      <melee>
+        <abilitymod type="number"/>
+        <misc type="number"/>
+        <size type="number"/>
+        <temporary type="number">0</temporary>
+        <total type="number"/>
+      </melee>
+      <ranged>
+        <abilitymod type="number"/>
+        <misc type="number"/>
+        <size type="number"/>
+        <temporary type="number"/>
+        <total type="number"/>
+      </ranged>
+    </attackbonus>
+    <classes/>
+    <coins>
+      <slot1>
+        <amount type="number"/>
+        <name type="string"/>
+      </slot1>
+      <slot2>
+        <amount type="number"/>
+        <name type="string"/>
+      </slot2>
+      <slot3>
+        <amount type="number"/>
+        <name type="string"/>
+      </slot3>
+      <slot4>
+        <amount type="number"/>
+        <name type="string"/>
+      </slot4>
+      <slot5>
+        <amount type="number"/>
+        <name type="string"/>
+      </slot5>
+      <slot6>
+        <amount type="number"/>
+        <name type="string"/>
+      </slot6>
+    </coins>
+    <combattoken type="token"/>
+    <defenses>
+      <damagereduction type="string"/>
+      <sr>
+        <base type="number"/>
+        <misc type="number"/>
+        <temporary type="number"/>
+        <total type="number"/>
+      </sr>
+    </defenses>
+    <deity type="string"/>
+    <encumbrance>
+      <armorcheckpenalty type="number"/>
+      <armormaxstatbonus type="number"/>
+      <armormaxstatbonusactive type="number"/>
+      <heavyload type="number"/>
+      <liftoffground type="number"/>
+      <liftoverhead type="number"/>
+      <lightload type="number"/>
+      <load type="number"/>
+      <mediumload type="number"/>
+      <pushordrag type="number"/>
+      <spellfailure type="number"/>
+    </encumbrance>
+    <exp type="number"/>
+    <expneeded type="number"/>
+    <featlist/>
+    <gender type="string"/>
+    <height type="string"/>
+    <hp>
+      <nonlethal type="number"/>
+      <surgesused type="number"/>
+      <temporary type="number"/>
+      <total type="number"/>
+      <wounds type="number"/>
+    </hp>
+    <initiative>
+      <abilitymod type="number"/>
+      <misc type="number"/>
+      <temporary type="number"/>
+      <total type="number"/>
+    </initiative>
+    <inventorylist/>
+    <languagelist/>
+    <level type="number"/>
+    <name type="string"/>
+    <notes type="string"/>
+    <proficiencyarmor/>
+    <proficiencyweapon/>
+    <race type="string"/>
+    <saves>
+      <fortitude>
+        <abilitymod type="number"/>
+        <base type="number"/>
+        <misc type="number"/>
+        <temporary type="number"/>
+        <total type="number"/>
+      </fortitude>
+      <reflex>
+        <abilitymod type="number"/>
+        <base type="number"/>
+        <misc type="number"/>
+        <temporary type="number"/>
+        <total type="number"/>
+      </reflex>
+      <will>
+        <abilitymod type="number"/>
+        <base type="number"/>
+        <misc type="number"/>
+        <temporary type="number"/>
+        <total type="number"/>
+      </will>
+    </saves>
+    <senses type="string"/>
+    <size type="string"/>
+    <skilllist/>
+    <skillpoints>
+      <unspent type="number"/>
+    </skillpoints>
+    <specialabilitylist/>
+    <speed>
+      <special type="string"/>
+      <armor type="number"/>
+      <base type="number"/>
+      <final type="number"/>
+      <misc type="number"/>
+      <temporary type="number"/>
+      <total type="number"/>
+    </speed>
+    <spellset/>
+    <weaponlist/>
+    <weight type="string"/>
+  </character>
+</root>

@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6359177E-993B-459A-8F07-D3C641DE7570}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CharacterConverter</RootNamespace>
+    <AssemblyName>CharacterConverter</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FG2Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Ionic.Zip.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BatchConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BatchConvert.Designer.cs">
+      <DependentUpon>BatchConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CharConverter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharConverter.Designer.cs">
+      <DependentUpon>CharConverter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DDI.cs" />
+    <Compile Include="FGXML.cs" />
+    <Compile Include="HeroLab.cs" />
+    <Compile Include="ModuleEntryEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleEntryEditor.Designer.cs">
+      <DependentUpon>ModuleEntryEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleManager.Designer.cs">
+      <DependentUpon>ModuleManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PCGen.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReplaceCharacter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReplaceCharacter.Designer.cs">
+      <DependentUpon>ReplaceCharacter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RS_35E.cs" />
+    <Compile Include="RS_4E.cs" />
+    <Compile Include="RS_PF.cs" />
+    <Compile Include="SaveOutputError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveOutputError.Designer.cs">
+      <DependentUpon>SaveOutputError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utility.cs" />
+    <EmbeddedResource Include="BatchConvert.resx">
+      <DependentUpon>BatchConvert.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CharConverter.resx">
+      <DependentUpon>CharConverter.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuleEntryEditor.resx">
+      <DependentUpon>ModuleEntryEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModuleManager.resx">
+      <DependentUpon>ModuleManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReplaceCharacter.resx">
+      <DependentUpon>ReplaceCharacter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveOutputError.resx">
+      <DependentUpon>SaveOutputError.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FG2Icon.ico" />
+    <EmbeddedResource Include="Ionic.Zip.dll" />
+    <Content Include="Resources\csheet_FantasyGrounds2_pc_3.5.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\Dndi-4E.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\FG2 Icon.png" />
+    <Content Include="Resources\grayframe.png" />
+    <Content Include="Resources\Output.xml" />
+    <Content Include="Resources\HeroLab-3.5E.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\PCGen-3.5E.xslt" />
+    <Content Include="Resources\SpellsetPF.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\Template-3.5E.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\Template-4E.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
