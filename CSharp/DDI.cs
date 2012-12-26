@@ -962,7 +962,7 @@ namespace CharacterConverter
 
             foreach (XmlNode magicItem in inChar.SelectNodes("CharacterSheet/LootTally/loot[@count>0]/RulesElement[@type='Magic Item']"))
             {
-                if (!app.ValueOf(magicItem, "specific[@name='Item Slot']").Contains("Off-Hand"))
+                if (!app.ValueOf(magicItem, "specific[@name='Item Slot']", false).Contains("Off-Hand"))
                     continue;
 
                 XmlElement convertedImplement = output.CreateElement(CharConverter.CreateId(weaponList));
@@ -1113,7 +1113,7 @@ namespace CharacterConverter
                 }
 
                 //subclass
-                convertedLoot.AppendChild(output.CreateElement("subclass"));
+                //convertedLoot.AppendChild(output.CreateElement("subclass"));
 
                 inventorylist.AppendChild(convertedLoot);
             }

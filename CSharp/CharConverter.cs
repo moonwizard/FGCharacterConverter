@@ -16,7 +16,7 @@ namespace CharacterConverter
         //Program Details
         //Version = Newest Fantasy Grounds version that this program is compatible with.
         //Revision = Alphabetic. Keeps track of the amount of Converter releases for the FG2 version.
-        const String CC_VERSION = "2.9.2";
+        const String CC_VERSION = "2.9.3";
         const String CC_REVISION = "A";
         const String SupportWebsite = "http://www.fantasygrounds.com/forums/forumdisplay.php?f=41";
 
