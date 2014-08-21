@@ -10,7 +10,7 @@
     <xsl:variable name="rangedablmod" select="attributes/attribute[@name='Dexterity']/attrbonus/@modified"/>
     <xsl:variable name="grappleablmod" select="attributes/attribute[@name='Strength']/attrbonus/@modified"/>
     <xsl:variable name="initiativeablmod" select="attributes/attribute[@name='Dexterity']/attrbonus/@modified"/>
-    <root version="2.8" ccversion="2.8.1.C">
+    <root version="3.0" ccversion="3.0.5.A">
       <character>
         <abilities>
           <charisma>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!-- Copyright (c) 2012, SmiteWorks USA LLC -->
-<root version ="2.8" pcgenversion="|EXPORT.VERSION|" ccversion="2.8.1.A">
+<root version ="3.0" pcgenversion="|EXPORT.VERSION|" ccversion="3.0.5.A">
 	<character>
 		<abilities>
 			<charisma>

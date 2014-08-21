@@ -16,7 +16,7 @@ namespace CharacterConverter
         //Program Details
         //Version = Newest Fantasy Grounds version that this program is compatible with.
         //Revision = Alphabetic. Keeps track of the amount of Converter releases for the FG2 version.
-        const String CC_VERSION = "2.9.3";
+        const String CC_VERSION = "3.0.6";
         const String CC_REVISION = "A";
         const String SupportWebsite = "http://www.fantasygrounds.com/forums/forumdisplay.php?f=41";
 
@@ -422,6 +422,12 @@ namespace CharacterConverter
 
             //Sets the output version "ccversion" attribute to the current version
             Set(outputdoc, "root/@ccversion", CC_VERSION + "." + CC_REVISION);
+            if (DisplayRuleset.Equals(RS_35E.Name))
+                Set(outputdoc, "root/@release", RS_35E.Release);
+            else if (DisplayRuleset.Equals(RS_PF.Name))
+                Set(outputdoc, "root/@release", RS_PF.Release);
+            else if (DisplayRuleset.Equals(RS_4E.Name))
+                Set(outputdoc, "root/@release", RS_4E.Release);
 
             //Loops through the character nodes and applies the correct parsing
             Boolean bError = false;

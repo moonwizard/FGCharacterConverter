@@ -271,16 +271,18 @@ namespace CharacterConverter
 
                 foreach (XmlNode source in nodeList)
                 {
+                    // Create weapon node
                     XmlNode converted = output.CreateElement(CharConverter.CreateId(node));
 
+                    // Name
                     String name = app.ValueOf(source, "@name");
+                    String nameLower = name.ToLower();
                     converted.AppendChild(CharConverter.CreateElement(output, "name", "string", name));
 
-                    //Creates an inventory item
-                    //if (!HlCheckForDuplicateId(node, name))
-                    //    HlAppendInventory(source, output, ref targetNode, "Weapon");
+                    // Type (0 = melee, 1 = ranged)
+                    converted.AppendChild(CharConverter.CreateElement(output, "type", "number", type));
 
-                    //attacks
+                    // Attacks
                     String[] attacks = app.ValueOf(source, "@attack").Split('/');
                     for (int i = 0; i < attacks.Length; i++)
                     {
@@ -291,50 +293,6 @@ namespace CharacterConverter
                     }
                     converted.AppendChild(CharConverter.CreateElement(output, "attacks", "number", Convert.ToString(attacks.Length)));
 
-                    //description
-                    //String description = ValueOf(source, "description");
-                    //converted.AppendChild(CreateElement(output, "description", "string", description));
-
-                    //damagebonus (incorrect)
-                    String damageBonus = "0";
-                    /*?
-                    String damageBonus = ValueOf(source, "@damage");
-                    if(damageBonus.Contains("+"))
-                        damageBonus = value.Substring(value.IndexOf("+") + 1);
-                    else
-                        damageBonus = "0";
-                    converted.AppendChild(CreateElement(output, "damagebonus", "number", damageBonus));
-                    */
-
-                    //damagedice
-                    String damagedice = "";
-                    value = app.ValueOf(source, "@damage");
-                    if (!String.IsNullOrEmpty(value))
-                    {
-                        var sbDamageDice = new StringBuilder();
-                        Boolean bAddComma = false;
-
-                        Regex rx = new Regex(@"(\d+)(d\d+)");
-                        MatchCollection mc = rx.Matches(value);
-                        foreach(Match m in mc)
-                        {
-                            int nDice = CharConverter.ConvertToInt(m.Groups[1].ToString());
-                            String sDie = m.Groups[2].ToString();
-
-                            for (int j = 0; j < nDice; ++j)
-                            {
-                                if (bAddComma)
-                                    sbDamageDice.Append(",");
-                                bAddComma = true;
-
-                                sbDamageDice.Append(sDie);
-                            }
-                        }
-
-                        damagedice = sbDamageDice.ToString();
-                    }
-                    converted.AppendChild(CharConverter.CreateElement(output, "damagedice", "dice", damagedice));
-
                     //critatkrange
                     String crit = app.ValueOf(source, "@crit");
                     if (crit.Contains("-"))
@@ -343,57 +301,220 @@ namespace CharacterConverter
                         crit = "20";
                     converted.AppendChild(CharConverter.CreateElement(output, "critatkrange", "number", crit));
 
-                    //critdmgmult
-                    String critdmgmult = app.ValueOf(source, "@crit");
-                    critdmgmult = critdmgmult.Contains("x") ? critdmgmult.Substring(critdmgmult.IndexOf("x") + 1) : "0";
-                    converted.AppendChild(CharConverter.CreateElement(output, "critdmgmult", "number", critdmgmult));
+                    // description
+                    //String description = ValueOf(source, "description");
+                    //converted.AppendChild(CreateElement(output, "description", "string", description));
 
-                    //damagetype
-                    var sb = new StringBuilder();
-                    XmlNodeList wepTypes = source.SelectNodes("weptype");
-                    for (int i = 0; i < wepTypes.Count; i++)
-                    {
-                        XmlNode wepType = wepTypes[i];
-                        sb.Append(wepType.InnerText.ToLower());
-                        if (i + 1 < wepTypes.Count)
-                            sb.Append(", ");
-                    }
-                    String damagetype = sb.ToString();
-                    converted.AppendChild(CharConverter.CreateElement(output, "damagetype", "string", damagetype));
-
-                    //type (0 = melee, 1 = ranged)
-                    converted.AppendChild(CharConverter.CreateElement(output, "type", "number", type));
-
+// JPG 3.0.5 - New Stuff
+                    // Handle range and special ranged weapon types
+                    String sWeaponType = "";
                     if (type.Equals("1"))
                     {
                         value = app.ValueOf(source, "rangedattack/@rangeincvalue");
                         converted.AppendChild(CharConverter.CreateElement(output, "rangeincrement", "number", value));
 
-                        String sRangedStatAdj = "";
                         if (name.StartsWith("Longbow") || name.StartsWith("Shortbow"))
-                        {
-                            sRangedStatAdj = "bow";
-
-                            Regex rx = new Regex(@"\(Str \+(\d+)\)");
-                            Match m = rx.Match(name);
-                            if (m.Success)
-                                converted.AppendChild(CharConverter.CreateElement(output, "damagemaxstat", "number", m.Groups[1].Value));
-                        }
+                            sWeaponType = "bow";
                         else if (name.StartsWith("Sling"))
-                            sRangedStatAdj = "sling";
-                        converted.AppendChild(CharConverter.CreateElement(output, "damagerangedstatadj", "string", sRangedStatAdj));
+                            sWeaponType = "sling";
                     }
+                    else
+                        sWeaponType = "melee";
+
+                    // Determine base damage type and magic bonus
+                    List<String> aBaseDamageTypes = new List<String>();
+                    String sDamageBonus = "";
+                    XmlNodeList wepTypes = source.SelectNodes("weptype");
+                    for (int i = 0; i < wepTypes.Count; i++)
+                        aBaseDamageTypes.Add(wepTypes[i].InnerText.ToLower());
+
+                    Regex rxMagic = new Regex(@"^\+(\d+)");
+                    Match mMagic = rxMagic.Match(name);
+                    if (mMagic.Success)
+                    {
+                        sDamageBonus = mMagic.Groups[1].Value;
+                        if (Regex.IsMatch(sDamageBonus, @"^[1-5]$"))
+                            aBaseDamageTypes.Add(@"magic");
+                        else
+                            aBaseDamageTypes.Add(@"epic");
+                    }
+                    if (Regex.IsMatch(nameLower, @"adamantine"))
+                        aBaseDamageTypes.Add(@"adamantine");
+                    if (Regex.IsMatch(nameLower, @"cold iron"))
+                        aBaseDamageTypes.Add(@"cold iron");
+                    if (Regex.IsMatch(nameLower, @"silver"))
+                        aBaseDamageTypes.Add(@"silver");
+                    
+                    String sBaseDamageType = String.Join(",", aBaseDamageTypes.ToArray());
+
+                    // Determine base damage multiple
+                    String sBaseDamageCrit = app.ValueOf(source, "@crit");
+                    sBaseDamageCrit = sBaseDamageCrit.Contains("x") ? sBaseDamageCrit.Substring(sBaseDamageCrit.IndexOf("x") + 1) : "2";
+
+                    // Build damage list
+                    XmlNode nodeDamageList = output.CreateElement("damagelist");
+
+                    // Determine damage clauses, and build damage list entries
+                    String[] aDamages = app.ValueOf(source, "@damage").Split(new string[] { " plus " }, StringSplitOptions.RemoveEmptyEntries);
+                    for (int i = 0; i < aDamages.Length; ++i)
+                    {
+                        List<String> aDamageDice = new List<String>();
+                        List<String> aDamageType = new List<String>();
+
+                        String[] aWords = aDamages[i].Split(null);
+                        if (aWords.Length > 0)
+                        {
+                            if (Regex.IsMatch(aWords[0], @"^[\d+-d]+$"))
+                            {
+                                Regex rx = new Regex(@"(\d+)(d\d+)");
+                                MatchCollection mc = rx.Matches(aWords[0]);
+                                foreach (Match m in mc)
+                                {
+                                    int nDice = CharConverter.ConvertToInt(m.Groups[1].ToString());
+                                    String sDie = m.Groups[2].ToString();
+                                    for (int j = 0; j < nDice; ++j)
+                                        aDamageDice.Add(sDie);
+                                }
+                            }
+
+                            if (i == 0)
+                                aDamageType.Add(sBaseDamageType);
+                            if (aWords.Length > 1)
+                                aDamageType.Add(String.Join(" ", aWords, 1, aWords.Length - 1));
+                        }
+
+                        if (aDamageDice.Count > 0)
+                        {
+                            XmlNode nodeDamageClause = output.CreateElement(CharConverter.CreateId(nodeDamageList));
+
+                            nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "dice", "dice", String.Join(",", aDamageDice.ToArray())));
+                            nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "type", "string", String.Join(",", aDamageType.ToArray())));
+
+                            if (i > 0)
+                                nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "critmult", "number", "2"));
+                            else
+                            {
+                                nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "bonus", "number", sDamageBonus));
+                                nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "critmult", "number", sBaseDamageCrit));
+
+                                if (sWeaponType == "bow")
+                                {
+                                    Regex rx = new Regex(@"\(Str \+(\d+)\)");
+                                    Match m = rx.Match(name);
+                                    if (m.Success)
+                                    {
+                                        nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "stat", "string", "strength"));
+                                        nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "statmax", "number", m.Groups[1].Value));
+                                        nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "statmult", "number", "1"));
+                                    }
+                                }
+                                else if (sWeaponType == "sling")
+                                {
+                                    nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "stat", "string", "strength"));
+                                    nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "statmult", "number", "1"));
+                                }
+                                else if (sWeaponType == "melee")
+                                {
+                                    nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "stat", "string", "strength"));
+
+                                    String sEquip = app.ValueOf(source, "@equipped", false);
+                                    if (String.Equals(sEquip, "offhand"))
+                                        nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "statmult", "number", "0.5"));
+                                    else if (String.Equals(sEquip, "bothhands"))
+                                        nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "statmult", "number", "1.5"));
+                                    else
+                                        nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "statmult", "number", "1"));
+                                }
+                            }
+
+                            nodeDamageList.AppendChild(nodeDamageClause);
+                        }
+                    }
+
+                    // Add the final damage list to the new weapon record
+                    converted.AppendChild(nodeDamageList);
+
+// JPG 3.0.5 - Old Stuff
+                    //// Damage Bonus (Unable to calculate, since only total provided, and too many permutations)
+                    //String damageBonus = "0";
+
+                    //// Damage Dice
+                    //String damagedice = "";
+                    //value = app.ValueOf(source, "@damage");
+                    //if (!String.IsNullOrEmpty(value))
+                    //{
+                    //    var sbDamageDice = new StringBuilder();
+                    //    Boolean bAddComma = false;
+
+                    //    Regex rx = new Regex(@"(\d+)(d\d+)");
+                    //    MatchCollection mc = rx.Matches(value);
+                    //    foreach(Match m in mc)
+                    //    {
+                    //        int nDice = CharConverter.ConvertToInt(m.Groups[1].ToString());
+                    //        String sDie = m.Groups[2].ToString();
+
+                    //        for (int j = 0; j < nDice; ++j)
+                    //        {
+                    //            if (bAddComma)
+                    //                sbDamageDice.Append(",");
+                    //            bAddComma = true;
+
+                    //            sbDamageDice.Append(sDie);
+                    //        }
+                    //    }
+
+                    //    damagedice = sbDamageDice.ToString();
+                    //}
+                    //converted.AppendChild(CharConverter.CreateElement(output, "damagedice", "dice", damagedice));
+
+                    //critdmgmult
+                    //String critdmgmult = app.ValueOf(source, "@crit");
+                    //critdmgmult = critdmgmult.Contains("x") ? critdmgmult.Substring(critdmgmult.IndexOf("x") + 1) : "0";
+                    //converted.AppendChild(CharConverter.CreateElement(output, "critdmgmult", "number", critdmgmult));
+
+                    //damagetype
+                    //var sb = new StringBuilder();
+                    //XmlNodeList wepTypes = source.SelectNodes("weptype");
+                    //for (int i = 0; i < wepTypes.Count; i++)
+                    //{
+                    //    XmlNode wepType = wepTypes[i];
+                    //    sb.Append(wepType.InnerText.ToLower());
+                    //    if (i + 1 < wepTypes.Count)
+                    //        sb.Append(", ");
+                    //}
+                    //String damagetype = sb.ToString();
+                    //converted.AppendChild(CharConverter.CreateElement(output, "damagetype", "string", damagetype));
+
+                    //if (type.Equals("1"))
+                    //{
+                    //    value = app.ValueOf(source, "rangedattack/@rangeincvalue");
+                    //    converted.AppendChild(CharConverter.CreateElement(output, "rangeincrement", "number", value));
+
+                    //    String sRangedStatAdj = "";
+                    //    if (name.StartsWith("Longbow") || name.StartsWith("Shortbow"))
+                    //    {
+                    //        sRangedStatAdj = "bow";
+
+                    //        Regex rx = new Regex(@"\(Str \+(\d+)\)");
+                    //        Match m = rx.Match(name);
+                    //        if (m.Success)
+                    //            converted.AppendChild(CharConverter.CreateElement(output, "damagemaxstat", "number", m.Groups[1].Value));
+                    //    }
+                    //    else if (name.StartsWith("Sling"))
+                    //        sRangedStatAdj = "sling";
+                    //    converted.AppendChild(CharConverter.CreateElement(output, "damagerangedstatadj", "string", sRangedStatAdj));
+                    //}
 
                     node.AppendChild(converted);
 
                     if (source.SelectSingleNode("rangedattack") != null && type.Equals("0"))
                     {
-                        attacks = app.ValueOf(source, "rangedattack/@attack").Split('/');
-
-                        String rangeincrement = app.ValueOf(source, "rangedattack/@rangeincvalue");
-                        String rangedstatadj = "thrown";
-
                         converted = output.CreateElement(CharConverter.CreateId(node));
+
+                        converted.AppendChild(CharConverter.CreateElement(output, "name", "string", name));
+                        converted.AppendChild(CharConverter.CreateElement(output, "type", "number", "1"));
+
+                        attacks = app.ValueOf(source, "rangedattack/@attack").Split('/');
                         for (int i = 0; i < attacks.Length; i++)
                         {
                             if (attacks[i].StartsWith("+"))
@@ -401,16 +522,73 @@ namespace CharacterConverter
                             converted.AppendChild(CharConverter.CreateElement(output,
                                                                 "attack" + Convert.ToString(i + 1), "number", attacks[i]));
                         }
-                        converted.AppendChild(CharConverter.CreateElement(output, "rangeincrement", "number", rangeincrement));
-                        converted.AppendChild(CharConverter.CreateElement(output, "name", "string", name));
-                        //converted.AppendChild(CreateElement(output, "bonus", "number", bonus));
-                        converted.AppendChild(CharConverter.CreateElement(output, "damagebonus", "number", damageBonus));
-                        converted.AppendChild(CharConverter.CreateElement(output, "damagedice", "dice", damagedice));
+
                         converted.AppendChild(CharConverter.CreateElement(output, "critatkrange", "number", crit));
-                        converted.AppendChild(CharConverter.CreateElement(output, "critdmgmult", "number", critdmgmult));
-                        converted.AppendChild(CharConverter.CreateElement(output, "damagerangedstatadj", "string", rangedstatadj));
-                        converted.AppendChild(CharConverter.CreateElement(output, "damagetype", "string", damagetype));
-                        converted.AppendChild(CharConverter.CreateElement(output, "type", "number", "1"));
+                        String rangeincrement = app.ValueOf(source, "rangedattack/@rangeincvalue");
+                        converted.AppendChild(CharConverter.CreateElement(output, "rangeincrement", "number", rangeincrement));
+
+                        // Build damage list
+                        XmlNode nodeDamageList2 = output.CreateElement("damagelist");
+
+                        // Determine damage clauses, and build damage list entries
+                        String[] aDamages2 = app.ValueOf(source, "@damage").Split(new string[] { " plus " }, StringSplitOptions.RemoveEmptyEntries);
+                        for (int i = 0; i < aDamages2.Length; ++i)
+                        {
+                            List<String> aDamageDice = new List<String>();
+                            List<String> aDamageType = new List<String>();
+
+                            String[] aWords = aDamages2[i].Split(null);
+                            if (aWords.Length > 0)
+                            {
+                                if (Regex.IsMatch(aWords[0], @"^[\d+-d]+$"))
+                                {
+                                    Regex rx = new Regex(@"(\d+)(d\d+)");
+                                    MatchCollection mc = rx.Matches(aWords[0]);
+                                    foreach (Match m in mc)
+                                    {
+                                        int nDice = CharConverter.ConvertToInt(m.Groups[1].ToString());
+                                        String sDie = m.Groups[2].ToString();
+                                        for (int j = 0; j < nDice; ++j)
+                                            aDamageDice.Add(sDie);
+                                    }
+                                }
+
+                                if (i == 0)
+                                    aDamageType.Add(sBaseDamageType);
+                                if (aWords.Length > 1)
+                                    aDamageType.Add(String.Join(" ", aWords, 1, aWords.Length - 1));
+                            }
+
+                            if (aDamageDice.Count > 0)
+                            {
+                                XmlNode nodeDamageClause = output.CreateElement(CharConverter.CreateId(nodeDamageList2));
+
+                                nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "dice", "dice", String.Join(",", aDamageDice.ToArray())));
+                                nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "type", "string", String.Join(",", aDamageType.ToArray())));
+
+                                if (i > 0)
+                                    nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "critmult", "number", "2"));
+                                else
+                                {
+                                    nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "bonus", "number", sDamageBonus));
+                                    nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "critmult", "number", sBaseDamageCrit));
+
+                                    // Assume "thrown" weapon type
+                                    nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "stat", "string", "strength"));
+                                    String sEquip = app.ValueOf(source, "@equipped", false);
+                                    if (String.Equals(sEquip, "offhand"))
+                                        nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "statmult", "number", "0.5"));
+                                    else
+                                        nodeDamageClause.AppendChild(CharConverter.CreateElement(output, "statmult", "number", "1"));
+                                }
+
+                                nodeDamageList2.AppendChild(nodeDamageClause);
+                            }
+                        }
+
+                        // Add the final damage list to the new weapon record
+                        converted.AppendChild(nodeDamageList2);
+
                         node.AppendChild(converted);
                     }
                 }

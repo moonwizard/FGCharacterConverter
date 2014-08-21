@@ -16,6 +16,8 @@ namespace CharacterConverter
         public const String LocalPath = @"\characters\3.5E.xml";
         public const String LocalBackupPath = @"\characters\3.5E.import.xml";
 
+        public const String Release = @"11|CoreRPG:3";
+
         static Dictionary<String, String> listSpellDCAbility = new Dictionary<String, String>
         {
             {"wizard", "intelligence"},

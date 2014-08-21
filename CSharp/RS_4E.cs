@@ -16,6 +16,8 @@ namespace CharacterConverter
         public const String LocalPath = @"\characters\4E.xml";
         public const String LocalBackupPath = @"\characters\4E.import.xml";
 
+        public const String Release = @"27|CoreRPG:3";
+
         static public XmlNode CheckForExistingPower(CharConverter app, XmlNode node, String name)
         {
             String value;

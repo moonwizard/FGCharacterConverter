@@ -11,10 +11,12 @@ namespace CharacterConverter
     class RS_PF
     {
         public const String Name = "PFRPG";
-        public const String InternalName = "3.5E";
+        public const String InternalName = "PFRPG";
 
-        public const String LocalPath = @"\characters\3.5E.xml";
-        public const String LocalBackupPath = @"\characters\3.5E.import.xml";
+        public const String LocalPath = @"\characters\PFRPG.xml";
+        public const String LocalBackupPath = @"\characters\PFRPG.import.xml";
+
+        public const String Release = @"1|3.5E:11|CoreRPG:3";
 
         static Dictionary<String, String> listSpellDCAbility = new Dictionary<String, String>
         {

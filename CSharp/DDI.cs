@@ -1091,7 +1091,7 @@ namespace CharacterConverter
                 convertedLoot.AppendChild(shortcut);
 
                 //showonminisheet
-                convertedLoot.AppendChild(CharConverter.CreateElement(output, "showonminisheet", "string", "0"));
+                convertedLoot.AppendChild(CharConverter.CreateElement(output, "showonminisheet", "number", "0"));
 
                 //weight
                 value = Normalize(app.ValueOf(loot, "RulesElement[1]/specific[@name='Weight']", lootName, false));
