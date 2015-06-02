@@ -140,33 +140,34 @@ namespace CharacterConverter
             RulesetBox.Items.Add(RS_4E.Name);
             RulesetBox.Items.Add(RS_35E.Name);
             RulesetBox.Items.Add(RS_PF.Name);
+            RulesetBox.Items.Add(RS_SavageWorlds3.Name);
             RulesetBox.SelectedIndex = 0;
             
             //Links the api calls with their corresponding functions
-            Api.Add("CC.HL.SPELLSET", (ApiDel)HeroLab.processSpellset);
-            Api.Add("CC.HL.LANGUAGELIST", (ApiDel)HeroLab.processLanguagelist);
-            Api.Add("CC.HL.WEAPONLIST", (ApiDel)HeroLab.processWeaponlist);
-            Api.Add("CC.HL.SPEED.SPECIAL", (ApiDel)HeroLab.processSpeedSpecial);
-            Api.Add("CC.HL.SENSES", (ApiDel)HeroLab.processSenses);
-            Api.Add("CC.HL.DEFENSES.DAMAGEREDUCTION", (ApiDel)HeroLab.processDefensesDamagereduction);
-            Api.Add("CC.HL.DEFENSES.SR", (ApiDel)HeroLab.processDefensesSr);
-            Api.Add("CC.HL.SKILLLIST", (ApiDel)HeroLab.processSkilllist);
-            Api.Add("CC.HL.CLASSES", (ApiDel)HeroLab.processClasses);
-            Api.Add("CC.HL.SPECIALABILITYLIST", (ApiDel)HeroLab.processSpecialabilitylist);
-            Api.Add("CC.HL.FEATLIST", (ApiDel)HeroLab.processFeatlist);
-            Api.Add("CC.HL.PROFICIENCYWEAPON", (ApiDel)HeroLab.processProficiencyweapon);
-            Api.Add("CC.HL.PROFICIENCYARMOR", (ApiDel)HeroLab.processProficiencyarmor);
-            Api.Add("CC.HL.ATTACKBONUS.GRAPPLE.SIZE", (ApiDel)HeroLab.processAttackbonusGrappleSize);
-            Api.Add("CC.HL.ATTACKBONUS.GRAPPLE.TOTAL", (ApiDel)HeroLab.processAttackbonusGrappleTotal);
-            Api.Add("CC.HL.ATTACKBONUS.GRAPPLE.MISC", (ApiDel)HeroLab.processAttackbonusGrappleMisc);
-            Api.Add("CC.HL.ATTACKBONUS.MELEE.TOTAL", (ApiDel)HeroLab.processAttackbonusMeleeTotal);
-            Api.Add("CC.HL.ATTACKBONUS.MELEE.MISC", (ApiDel)HeroLab.processAttackbonusMeleeMisc);
-            Api.Add("CC.HL.ATTACKBONUS.RANGED.TOTAL", (ApiDel)HeroLab.processAttackbonusRangedTotal);
-            Api.Add("CC.HL.ATTACKBONUS.RANGED.MISC", (ApiDel)HeroLab.processAttackbonusRangedMisc);
-            Api.Add("CC.HL.INVENTORYLIST", (ApiDel)HeroLab.processInventorylist);
-            Api.Add("CC.HL.SAVES.FORTITUDE.MISC", (ApiDel)HeroLab.processSavesFortitudeMisc);
-            Api.Add("CC.HL.SAVES.WILL.MISC", (ApiDel)HeroLab.processSavesWillMisc);
-            Api.Add("CC.HL.SAVES.REFLEX.MISC", (ApiDel)HeroLab.processSavesReflexMisc);
+            Api.Add("CC.HL.SPELLSET", (ApiDel)HeroLab_3_5.processSpellset);
+            Api.Add("CC.HL.LANGUAGELIST", (ApiDel)HeroLab_3_5.processLanguagelist);
+            Api.Add("CC.HL.WEAPONLIST", (ApiDel)HeroLab_3_5.processWeaponlist);
+            Api.Add("CC.HL.SPEED.SPECIAL", (ApiDel)HeroLab_3_5.processSpeedSpecial);
+            Api.Add("CC.HL.SENSES", (ApiDel)HeroLab_3_5.processSenses);
+            Api.Add("CC.HL.DEFENSES.DAMAGEREDUCTION", (ApiDel)HeroLab_3_5.processDefensesDamagereduction);
+            Api.Add("CC.HL.DEFENSES.SR", (ApiDel)HeroLab_3_5.processDefensesSr);
+            Api.Add("CC.HL.SKILLLIST", (ApiDel)HeroLab_3_5.processSkilllist);
+            Api.Add("CC.HL.CLASSES", (ApiDel)HeroLab_3_5.processClasses);
+            Api.Add("CC.HL.SPECIALABILITYLIST", (ApiDel)HeroLab_3_5.processSpecialabilitylist);
+            Api.Add("CC.HL.FEATLIST", (ApiDel)HeroLab_3_5.processFeatlist);
+            Api.Add("CC.HL.PROFICIENCYWEAPON", (ApiDel)HeroLab_3_5.processProficiencyweapon);
+            Api.Add("CC.HL.PROFICIENCYARMOR", (ApiDel)HeroLab_3_5.processProficiencyarmor);
+            Api.Add("CC.HL.ATTACKBONUS.GRAPPLE.SIZE", (ApiDel)HeroLab_3_5.processAttackbonusGrappleSize);
+            Api.Add("CC.HL.ATTACKBONUS.GRAPPLE.TOTAL", (ApiDel)HeroLab_3_5.processAttackbonusGrappleTotal);
+            Api.Add("CC.HL.ATTACKBONUS.GRAPPLE.MISC", (ApiDel)HeroLab_3_5.processAttackbonusGrappleMisc);
+            Api.Add("CC.HL.ATTACKBONUS.MELEE.TOTAL", (ApiDel)HeroLab_3_5.processAttackbonusMeleeTotal);
+            Api.Add("CC.HL.ATTACKBONUS.MELEE.MISC", (ApiDel)HeroLab_3_5.processAttackbonusMeleeMisc);
+            Api.Add("CC.HL.ATTACKBONUS.RANGED.TOTAL", (ApiDel)HeroLab_3_5.processAttackbonusRangedTotal);
+            Api.Add("CC.HL.ATTACKBONUS.RANGED.MISC", (ApiDel)HeroLab_3_5.processAttackbonusRangedMisc);
+            Api.Add("CC.HL.INVENTORYLIST", (ApiDel)HeroLab_3_5.processInventorylist);
+            Api.Add("CC.HL.SAVES.FORTITUDE.MISC", (ApiDel)HeroLab_3_5.processSavesFortitudeMisc);
+            Api.Add("CC.HL.SAVES.WILL.MISC", (ApiDel)HeroLab_3_5.processSavesWillMisc);
+            Api.Add("CC.HL.SAVES.REFLEX.MISC", (ApiDel)HeroLab_3_5.processSavesReflexMisc);
 
             Api.Add("CC.DNDI.CLASS.BASE", (ApiDel)DDI.processClassBase);
             Api.Add("CC.DNDI.CLASS.EPIC", (ApiDel)DDI.processClassEpic);
@@ -197,6 +198,15 @@ namespace CharacterConverter
             Api.Add("CC.PG.SPECIALABILITYLIST", (ApiDel)PCGen.processSpecialabilitylist);
             Api.Add("CC.PG.SPEED.SPECIAL", (ApiDel)PCGen.processSpeedSpecial);
             Api.Add("CC.PG.SPELLSET", (ApiDel)PCGen.processSpellset);
+
+            Api.Add("CC.HLSW.ARMORLIST", (ApiDel)HeroLab_SavageWorlds3.processArmorList);
+            Api.Add("CC.HLSW.POWERLIST", (ApiDel)HeroLab_SavageWorlds3.processPowerList);
+            Api.Add("CC.HLSW.EDGELIST", (ApiDel)HeroLab_SavageWorlds3.processEdgeList);
+            Api.Add("CC.HLSW.HINDRANCELIST", (ApiDel)HeroLab_SavageWorlds3.processHindraceList);
+            Api.Add("CC.HLSW.INVLIST", (ApiDel)HeroLab_SavageWorlds3.processInventoryList);
+            Api.Add("CC.HLSW.SKILLLIST", (ApiDel)HeroLab_SavageWorlds3.processSkillList);
+            Api.Add("CC.HLSW.WEAPONLIST", (ApiDel)HeroLab_SavageWorlds3.processWeaponList);
+            Api.Add("CC.HLSW.ARCANETYPE", (ApiDel)HeroLab_SavageWorlds3.processArcaneType);
         }
 
         #region Ui
@@ -235,8 +245,8 @@ namespace CharacterConverter
             {
                 if (SourceFormat.Equals(PCGen.Format))
                     importDialog.Filter = PCGen.Filter;
-                else if (SourceFormat.Equals(HeroLab.Format))
-                    importDialog.Filter = HeroLab.Filter;
+                else if (SourceFormat.Equals(HeroLab_3_5.Format))
+                    importDialog.Filter = HeroLab_3_5.Filter;
                 else if (SourceFormat.Equals(FGXML.Format))
                     importDialog.Filter = FGXML.Filter;
             }
@@ -244,10 +254,15 @@ namespace CharacterConverter
             {
                 if (SourceFormat.Equals(PCGen.Format))
                     importDialog.Filter = PCGen.Filter;
-                else if (SourceFormat.Equals(HeroLab.Format))
-                    importDialog.Filter = HeroLab.Filter;
+                else if (SourceFormat.Equals(HeroLab_3_5.Format))
+                    importDialog.Filter = HeroLab_3_5.Filter;
                 else if (SourceFormat.Equals(FGXML.Format))
                     importDialog.Filter = FGXML.Filter;
+            }
+            else if (DisplayRuleset.Equals(RS_SavageWorlds3.Name))
+            {
+                 if (SourceFormat.Equals(HeroLab_SavageWorlds3.Format))
+                     importDialog.Filter = HeroLab_SavageWorlds3.Filter;
             }
 
             if (SourceFormat.Equals(FGXML.Format))
@@ -315,7 +330,7 @@ namespace CharacterConverter
                 LocalPath = RS_35E.LocalPath;
                 LocalBackupPath = RS_35E.LocalBackupPath;
 
-                SourceBox.Items.Add(HeroLab.Format);
+                SourceBox.Items.Add(HeroLab_3_5.Format);
                 SourceBox.Items.Add(PCGen.Format);
                 SourceBox.Items.Add(FGXML.Format);
             }
@@ -325,10 +340,19 @@ namespace CharacterConverter
                 LocalPath = RS_PF.LocalPath;
                 LocalBackupPath = RS_PF.LocalBackupPath;
 
-                SourceBox.Items.Add(HeroLab.Format);
+                SourceBox.Items.Add(HeroLab_3_5.Format);
                 SourceBox.Items.Add(PCGen.Format);
                 SourceBox.Items.Add(FGXML.Format);
             }
+            else if (DisplayRuleset.Equals(RS_SavageWorlds3.Name))
+            {
+                InternalRuleset = RS_SavageWorlds3.InternalName;
+                LocalPath = RS_SavageWorlds3.LocalPath;
+                LocalBackupPath = RS_SavageWorlds3.LocalBackupPath;
+
+                SourceBox.Items.Add(HeroLab_SavageWorlds3.Format);
+            }
+
             SourceBox.SelectedIndex = 0;
         }
 
@@ -424,6 +448,8 @@ namespace CharacterConverter
             Set(outputdoc, "root/@ccversion", CC_VERSION + "." + CC_REVISION);
             if (DisplayRuleset.Equals(RS_35E.Name))
                 Set(outputdoc, "root/@release", RS_35E.Release);
+            else if (DisplayRuleset.Equals(RS_SavageWorlds3.Name))
+                Set(outputdoc, "root/@release", RS_SavageWorlds3.Release);
             else if (DisplayRuleset.Equals(RS_PF.Name))
                 Set(outputdoc, "root/@release", RS_PF.Release);
             else if (DisplayRuleset.Equals(RS_4E.Name))
@@ -438,10 +464,15 @@ namespace CharacterConverter
                 String xsltPath = null;
                 try
                 {
-                    if (SourceFormat.Equals(HeroLab.Format))
+                    if (SourceFormat.Equals(HeroLab_3_5.Format))
                     {
                         xslt = Properties.Resources.HeroLab_3_5E;
-                        xsltPath = XsltPath + HeroLab.Xslt;
+                        xsltPath = XsltPath + HeroLab_3_5.Xslt;
+                    }
+                    else if (SourceFormat.Equals(HeroLab_SavageWorlds3.Format))
+                    {
+                        xslt = Properties.Resources.HeroLab_SavageWorlds3;
+                        xsltPath = XsltPath + HeroLab_SavageWorlds3.Xslt;
                     }
                     else if (SourceFormat.Equals(DDI.Format))
                     {
@@ -674,7 +705,8 @@ namespace CharacterConverter
 
             try
             {
-                Utility.CreateFileFromBytes(Properties.Resources.HeroLab_3_5E, XsltPath + HeroLab.Xslt, true);
+                Utility.CreateFileFromBytes(Properties.Resources.HeroLab_3_5E, XsltPath + HeroLab_3_5.Xslt, true);
+                Utility.CreateFileFromBytes(Properties.Resources.HeroLab_SavageWorlds3, XsltPath + HeroLab_SavageWorlds3.Xslt, true);
                 Utility.CreateFileFromBytes(Properties.Resources.Dndi_4E, XsltPath + DDI.Xslt, true);
                 Utility.CreateFileFromBytes(Properties.Resources.PCGen_3_5E, XsltPath + PCGen.Xslt, true);
             }
@@ -986,11 +1018,17 @@ namespace CharacterConverter
                     CharPath = DDI.CharPath;
                     DDI.CheckFile(input, errorMessage);
                 }
-                else if (SourceFormat.Equals(HeroLab.Format))
+                else if (SourceFormat.Equals(HeroLab_SavageWorlds3.Format))
                 {
-                    NamePath = HeroLab.NamePath;
-                    CharPath = HeroLab.CharPath;
-                    HeroLab.CheckFile(input, errorMessage);
+                    NamePath = HeroLab_SavageWorlds3.NamePath;
+                    CharPath = HeroLab_SavageWorlds3.CharPath;
+                    HeroLab_SavageWorlds3.CheckFile(input, errorMessage);
+                }
+                else if (SourceFormat.Equals(HeroLab_3_5.Format))
+                {
+                    NamePath = HeroLab_3_5.NamePath;
+                    CharPath = HeroLab_3_5.CharPath;
+                    HeroLab_3_5.CheckFile(input, errorMessage);
                 }
                 else if (SourceFormat.Equals(FGXML.Format))
                 {
@@ -1086,9 +1124,9 @@ namespace CharacterConverter
 
         XmlNode SearchModules(XmlNode characterNode)
         {
-            for (int i = 0; i < ModuleManager.Types.Length; i++)
+            for (int i = 0; i < ModuleManager.Types[DisplayRuleset].Length; i++)
             {
-                String type = ModuleManager.Types[i];
+                String type = ModuleManager.Types[DisplayRuleset][i];
 
                 //Checks if there are loaded modules for the ruleset and type
                 //if there are no modules this type is skipped
@@ -1100,49 +1138,68 @@ namespace CharacterConverter
                 var playerNodeNameList = new List<String>();
                 //Adds all of the nodes of one type for the 3.5E and Pathfinder rulesets
                 //based on module database location assumptions
-                if (DisplayRuleset.Equals(RS_35E.Name) || DisplayRuleset.Equals(RS_PF.Name))
+                if (DisplayRuleset.Equals(RS_35E.Name) || DisplayRuleset.Equals(RS_PF.Name) || DisplayRuleset.Equals(RS_SavageWorlds3.Name))
                 {
                     var paths = new List<string>();
-                    if (type.Equals(ModuleManager.Spells))
+                    if (DisplayRuleset.Equals(RS_35E.Name) || DisplayRuleset.Equals(RS_PF.Name))
                     {
-                        XmlNode spellsetNode = characterNode.SelectSingleNode("spellset");
-                        if(spellsetNode != null)
+                        if (type.Equals(ModuleManager.Spells))
                         {
-                            foreach (XmlNode spellset in spellsetNode.ChildNodes)
+                            XmlNode spellsetNode = characterNode.SelectSingleNode("spellset");
+                            if (spellsetNode != null)
                             {
-                                XmlNode levelsNode = spellset.SelectSingleNode("levels");
-                                if (levelsNode == null)
-                                    continue;
-
-                                foreach (XmlNode level in levelsNode.ChildNodes)
+                                foreach (XmlNode spellset in spellsetNode.ChildNodes)
                                 {
-                                    XmlNode spellsNode = level.SelectSingleNode("spells");
-                                    if (spellsNode == null)
+                                    XmlNode levelsNode = spellset.SelectSingleNode("levels");
+                                    if (levelsNode == null)
                                         continue;
 
-                                    foreach (XmlNode spell in spellsNode.ChildNodes)
+                                    foreach (XmlNode level in levelsNode.ChildNodes)
                                     {
-                                        playerNodeList.Add(spell);
-                                        playerNodeNameList.Add(ValueOf(spell, "name"));
+                                        XmlNode spellsNode = level.SelectSingleNode("spells");
+                                        if (spellsNode == null)
+                                            continue;
+
+                                        foreach (XmlNode spell in spellsNode.ChildNodes)
+                                        {
+                                            playerNodeList.Add(spell);
+                                            playerNodeNameList.Add(ValueOf(spell, "name"));
+                                        }
                                     }
                                 }
                             }
                         }
+                        else if (type.Equals(ModuleManager.Weapons))
+                        {
+                            paths.Add("weaponlist/*");
+                            paths.Add("inventorylist/*");
+                        }
+                        else if (type.Equals(ModuleManager.Skills))
+                            paths.Add("skilllist/*");
+                        else if (type.Equals(ModuleManager.Feats))
+                            paths.Add("featlist/*");
+                        else if (type.Equals(ModuleManager.MagicItems))
+                            paths.Add("inventorylist/*");
+                        else if (type.Equals(ModuleManager.Equipment))
+                            paths.Add("inventorylist/*");
                     }
-                    else if (type.Equals(ModuleManager.Weapons))
+                    else if (DisplayRuleset.Equals(RS_SavageWorlds3.Name))
                     {
-                        paths.Add("weaponlist/*");
-                        paths.Add("inventorylist/*");
+                        if (type.Equals(ModuleManager.SWSkills))
+                            paths.Add("skilllist/*");
+                        else if (type.Equals(ModuleManager.SWWeapons))
+                            paths.Add("weaponlist/*");
+                        else if (type.Equals(ModuleManager.SWArmor))
+                            paths.Add("armorlist/*");
+                        else if (type.Equals(ModuleManager.Gear))
+                            paths.Add("invlist/*");
+                        else if (type.Equals(ModuleManager.Hindrances))
+                            paths.Add("hindrances/*");
+                        else if (type.Equals(ModuleManager.Edges))
+                            paths.Add("edges/*");
+                        else if (type.Equals(ModuleManager.Powers))
+                            paths.Add("atplist/*");
                     }
-                    else if (type.Equals(ModuleManager.Skills))
-                        paths.Add("skilllist/*");
-                    else if (type.Equals(ModuleManager.Feats))
-                        paths.Add("featlist/*");
-                    else if (type.Equals(ModuleManager.MagicItems))
-                        paths.Add("inventorylist/*");
-                    else if (type.Equals(ModuleManager.Equipment))
-                        paths.Add("inventorylist/*");
-
                     if (paths.Count > 0)
                     {
                         foreach (String path in paths)
@@ -1163,7 +1220,9 @@ namespace CharacterConverter
 
                 foreach (var document in documents)
                 {
-                    foreach (XmlNode dbNode in document.SelectSingleNode(ModuleManager.Paths[type]).ChildNodes)
+                    XmlNode dbNodes = document.SelectSingleNode(ModuleManager.Paths[type]);
+                    if (dbNodes == null) continue;
+                    foreach (XmlNode dbNode in dbNodes.ChildNodes)
                     {
                         String name = ValueOf(dbNode, "name");
                         int playerNodeIndex;

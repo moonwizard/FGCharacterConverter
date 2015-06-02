@@ -22,6 +22,16 @@ namespace CharacterConverter
         public const String Feats = "Feats";
         public const String Spells = "Spells";
         public const String MagicItems = "Magic Items";
+        public const String Hindrances = "Hindrances";
+        public const String Edges = "Edges";
+        public const String Powers = "Powers";
+        public const String SWWeapons = "SW Weapons";
+        public const String SWArmor = "SW Armor";
+        public const String SWSkills = "SW Skills";
+        public const String Gear = "Gear";
+
+
+
         public static readonly Dictionary<String, String> Paths = new Dictionary<string, string>()
             {
                 //{Races, RefPath + "races"},
@@ -32,9 +42,50 @@ namespace CharacterConverter
                 {Equipment, RefPath + "equipment"},
                 {Feats, RefPath + "feats"},
                 {MagicItems, RefPath + "magicitems"},
-                {Spells, "root/spelldesc"}
+                {Spells, "root/spelldesc"},
+                {SWSkills, RefPath + "skills"},
+                {SWWeapons, RefPath + "weapons"},
+                {SWArmor, RefPath + "armor"},
+                {Gear, RefPath + "mundaneitems"},
+                {Hindrances, RefPath + "hindrances"},
+                {Edges, RefPath + "edges"},
+                {Powers, "root/powerdesc"}
             };
-        public static readonly String[] Types = new []
+
+        public static readonly Dictionary<String, String[]> Types = new Dictionary<string,string[]>()
+            {
+                { RS_PF.Name, new [] {
+                Skills,
+                Weapons,
+                Armor,
+                Equipment,
+                Feats,
+                Spells,
+                MagicItems
+                    }
+                },
+                { RS_35E.Name, new [] {
+                Skills,
+                Weapons,
+                Armor,
+                Equipment,
+                Feats,
+                Spells,
+                MagicItems
+                    }
+                },
+                { RS_SavageWorlds3.Name, new [] {
+                SWSkills,
+                SWWeapons,
+                SWArmor,
+                Gear,
+                Hindrances,
+                Edges,
+                Powers
+                    }
+                }
+            };
+ /*       public static readonly String[] Types = new []
             {
                 //Races,
                 //Classes,
@@ -44,8 +95,16 @@ namespace CharacterConverter
                 Equipment,
                 Feats,
                 Spells,
-                MagicItems
+                MagicItems,
+                SWSkills,
+                SWWeapons,
+                SWArmor,
+                Gear,
+                Hindrances,
+                Edges,
+                Powers
             };
+ */
         public static List<Dictionary<String, String>> DefaultEntries
         {
             get
@@ -237,7 +296,9 @@ namespace CharacterConverter
                 mod.ExtractAll(CharConverter.CCDir + "\\temp");
                 if (File.Exists(CharConverter.CCDir + "\\temp\\client.xml"))
                     temp.Load(CharConverter.CCDir + "\\temp\\client.xml");
-                else if(File.Exists(CharConverter.CCDir + "\\temp\\db.xml"))
+                if (File.Exists(CharConverter.CCDir + "\\temp\\common.xml"))
+                    temp.Load(CharConverter.CCDir + "\\temp\\common.xml");
+                else if (File.Exists(CharConverter.CCDir + "\\temp\\db.xml"))
                     temp.Load(CharConverter.CCDir + "\\temp\\db.xml");
                 else
                     throw new Exception("No xml database found");

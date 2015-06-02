@@ -146,6 +146,7 @@ namespace CharacterConverter
             this.RulesetCBox.Name = "RulesetCBox";
             this.RulesetCBox.Size = new System.Drawing.Size(277, 21);
             this.RulesetCBox.TabIndex = 14;
+            this.RulesetCBox.SelectedIndexChanged += new System.EventHandler(this.RulesetCBox_SelectedIndexChanged);
             // 
             // label1
             // 

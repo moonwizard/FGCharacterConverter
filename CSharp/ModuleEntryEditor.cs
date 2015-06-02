@@ -16,6 +16,7 @@ namespace CharacterConverter
                                     {
                                         RS_PF.Name,
                                         RS_35E.Name,
+                                        RS_SavageWorlds3.Name
                                         //RS_4E.Name
                                     };
         public ModuleEntryEditor(Dictionary<String, String> mod)
@@ -24,8 +25,6 @@ namespace CharacterConverter
             EditedModule = mod;
 
             RulesetCBox.Items.AddRange(Rulesets);
-
-            TypeBox.Items.AddRange(ModuleManager.Types);
 
             OpenModuleDialog.Filter = "FG Module File (.mod)|*.mod";
             OpenModuleDialog.Title = "Select a Fantasy Grounds Module File";
@@ -43,6 +42,13 @@ namespace CharacterConverter
                 if (modruleset.Contains(ruleset))
                     RulesetCBox.SelectedIndex = i;
             }
+            if (RulesetCBox.SelectedIndex < 0) {
+                RulesetCBox.SelectedIndex = 0;
+            }
+            String DisplayRuleset = Rulesets[RulesetCBox.SelectedIndex];
+            TypeBox.Items.Clear();
+            TypeBox.Items.AddRange(ModuleManager.Types[DisplayRuleset]);
+
             String modtype = mod["type"];
             for(int i = 0; i < TypeBox.Items.Count; i++)
             {
@@ -90,6 +96,13 @@ namespace CharacterConverter
             {
                 PathBox.Text = OpenModuleDialog.FileName;
             }
+        }
+
+        private void RulesetCBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String DisplayRuleset = Rulesets[RulesetCBox.SelectedIndex];
+            TypeBox.Items.Clear();
+            TypeBox.Items.AddRange(ModuleManager.Types[DisplayRuleset]);
         }
     }
 }

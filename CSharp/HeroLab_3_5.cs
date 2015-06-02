@@ -9,7 +9,7 @@ using System.Xml;
 
 namespace CharacterConverter
 {
-    class HeroLab
+    class HeroLab_3_5
     {
         public const String Format = "Hero Lab (.hlfg)";
 
