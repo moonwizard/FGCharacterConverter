@@ -93,9 +93,9 @@ namespace CharacterConverter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] HeroLab_SavageWorlds3 {
+        internal static byte[] HeroLab_SavageWorlds {
             get {
-                object obj = ResourceManager.GetObject("HeroLab_SavageWorlds3", resourceCulture);
+                object obj = ResourceManager.GetObject("HeroLab_SavageWorlds", resourceCulture);
                 return ((byte[])(obj));
             }
         }

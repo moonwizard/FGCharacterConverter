@@ -74,7 +74,7 @@ namespace CharacterConverter
                 MagicItems
                     }
                 },
-                { RS_SavageWorlds3.Name, new [] {
+                { RS_SavageWorlds.Name, new [] {
                 SWSkills,
                 SWWeapons,
                 SWArmor,

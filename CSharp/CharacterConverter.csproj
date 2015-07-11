@@ -63,8 +63,8 @@
     <Compile Include="CharConverter.Designer.cs">
       <DependentUpon>CharConverter.cs</DependentUpon>
     </Compile>
-    <Compile Include="HeroLab_SavageWorlds3.cs" />
-    <Compile Include="RS_SavageWorlds3.cs" />
+    <Compile Include="HeroLab_SavageWorlds.cs" />
+    <Compile Include="RS_SavageWorlds.cs" />
     <Compile Include="DDI.cs" />
     <Compile Include="FGXML.cs" />
     <Compile Include="HeroLab_3_5.cs" />
@@ -151,8 +151,7 @@
     <Content Include="Resources\FG2 Icon.png" />
     <Content Include="Resources\functx-1.0-doc-2007-01.xsl" />
     <Content Include="Resources\grayframe.png" />
-    <None Include="Resources\HeroLab-3.5E1.xslt" />
-    <Content Include="Resources\HeroLab-SavageWorlds3.xslt">
+    <Content Include="Resources\HeroLab-SavageWorlds.xslt">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Resources\Output.xml" />

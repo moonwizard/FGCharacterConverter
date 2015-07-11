@@ -139,7 +139,7 @@
   <data name="PCGen_3_5E" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PCGen-3.5E.xslt;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="HeroLab_SavageWorlds3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HeroLab-SavageWorlds3.xslt;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="HeroLab_SavageWorlds" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HeroLab-SavageWorlds.xslt;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

@@ -16,7 +16,7 @@ namespace CharacterConverter
                                     {
                                         RS_PF.Name,
                                         RS_35E.Name,
-                                        RS_SavageWorlds3.Name
+                                        RS_SavageWorlds.Name
                                         //RS_4E.Name
                                     };
         public ModuleEntryEditor(Dictionary<String, String> mod)

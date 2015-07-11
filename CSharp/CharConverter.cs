@@ -140,7 +140,7 @@ namespace CharacterConverter
             RulesetBox.Items.Add(RS_4E.Name);
             RulesetBox.Items.Add(RS_35E.Name);
             RulesetBox.Items.Add(RS_PF.Name);
-            RulesetBox.Items.Add(RS_SavageWorlds3.Name);
+            RulesetBox.Items.Add(RS_SavageWorlds.Name);
             RulesetBox.SelectedIndex = 0;
             
             //Links the api calls with their corresponding functions
@@ -199,14 +199,14 @@ namespace CharacterConverter
             Api.Add("CC.PG.SPEED.SPECIAL", (ApiDel)PCGen.processSpeedSpecial);
             Api.Add("CC.PG.SPELLSET", (ApiDel)PCGen.processSpellset);
 
-            Api.Add("CC.HLSW.ARMORLIST", (ApiDel)HeroLab_SavageWorlds3.processArmorList);
-            Api.Add("CC.HLSW.POWERLIST", (ApiDel)HeroLab_SavageWorlds3.processPowerList);
-            Api.Add("CC.HLSW.EDGELIST", (ApiDel)HeroLab_SavageWorlds3.processEdgeList);
-            Api.Add("CC.HLSW.HINDRANCELIST", (ApiDel)HeroLab_SavageWorlds3.processHindraceList);
-            Api.Add("CC.HLSW.INVLIST", (ApiDel)HeroLab_SavageWorlds3.processInventoryList);
-            Api.Add("CC.HLSW.SKILLLIST", (ApiDel)HeroLab_SavageWorlds3.processSkillList);
-            Api.Add("CC.HLSW.WEAPONLIST", (ApiDel)HeroLab_SavageWorlds3.processWeaponList);
-            Api.Add("CC.HLSW.ARCANETYPE", (ApiDel)HeroLab_SavageWorlds3.processArcaneType);
+            Api.Add("CC.HLSW.ARMORLIST", (ApiDel)HeroLab_SavageWorlds.processArmorList);
+            Api.Add("CC.HLSW.POWERLIST", (ApiDel)HeroLab_SavageWorlds.processPowerList);
+            Api.Add("CC.HLSW.EDGELIST", (ApiDel)HeroLab_SavageWorlds.processEdgeList);
+            Api.Add("CC.HLSW.HINDRANCELIST", (ApiDel)HeroLab_SavageWorlds.processHindraceList);
+            Api.Add("CC.HLSW.INVLIST", (ApiDel)HeroLab_SavageWorlds.processInventoryList);
+            Api.Add("CC.HLSW.SKILLLIST", (ApiDel)HeroLab_SavageWorlds.processSkillList);
+            Api.Add("CC.HLSW.WEAPONLIST", (ApiDel)HeroLab_SavageWorlds.processWeaponList);
+            Api.Add("CC.HLSW.ARCANETYPE", (ApiDel)HeroLab_SavageWorlds.processArcaneType);
         }
 
         #region Ui
@@ -259,10 +259,10 @@ namespace CharacterConverter
                 else if (SourceFormat.Equals(FGXML.Format))
                     importDialog.Filter = FGXML.Filter;
             }
-            else if (DisplayRuleset.Equals(RS_SavageWorlds3.Name))
+            else if (DisplayRuleset.Equals(RS_SavageWorlds.Name))
             {
-                 if (SourceFormat.Equals(HeroLab_SavageWorlds3.Format))
-                     importDialog.Filter = HeroLab_SavageWorlds3.Filter;
+                 if (SourceFormat.Equals(HeroLab_SavageWorlds.Format))
+                     importDialog.Filter = HeroLab_SavageWorlds.Filter;
             }
 
             if (SourceFormat.Equals(FGXML.Format))
@@ -344,13 +344,13 @@ namespace CharacterConverter
                 SourceBox.Items.Add(PCGen.Format);
                 SourceBox.Items.Add(FGXML.Format);
             }
-            else if (DisplayRuleset.Equals(RS_SavageWorlds3.Name))
+            else if (DisplayRuleset.Equals(RS_SavageWorlds.Name))
             {
-                InternalRuleset = RS_SavageWorlds3.InternalName;
-                LocalPath = RS_SavageWorlds3.LocalPath;
-                LocalBackupPath = RS_SavageWorlds3.LocalBackupPath;
+                InternalRuleset = RS_SavageWorlds.InternalName;
+                LocalPath = RS_SavageWorlds.LocalPath;
+                LocalBackupPath = RS_SavageWorlds.LocalBackupPath;
 
-                SourceBox.Items.Add(HeroLab_SavageWorlds3.Format);
+                SourceBox.Items.Add(HeroLab_SavageWorlds.Format);
             }
 
             SourceBox.SelectedIndex = 0;
@@ -448,8 +448,8 @@ namespace CharacterConverter
             Set(outputdoc, "root/@ccversion", CC_VERSION + "." + CC_REVISION);
             if (DisplayRuleset.Equals(RS_35E.Name))
                 Set(outputdoc, "root/@release", RS_35E.Release);
-            else if (DisplayRuleset.Equals(RS_SavageWorlds3.Name))
-                Set(outputdoc, "root/@release", RS_SavageWorlds3.Release);
+            else if (DisplayRuleset.Equals(RS_SavageWorlds.Name))
+                Set(outputdoc, "root/@release", RS_SavageWorlds.Release);
             else if (DisplayRuleset.Equals(RS_PF.Name))
                 Set(outputdoc, "root/@release", RS_PF.Release);
             else if (DisplayRuleset.Equals(RS_4E.Name))
@@ -469,10 +469,10 @@ namespace CharacterConverter
                         xslt = Properties.Resources.HeroLab_3_5E;
                         xsltPath = XsltPath + HeroLab_3_5.Xslt;
                     }
-                    else if (SourceFormat.Equals(HeroLab_SavageWorlds3.Format))
+                    else if (SourceFormat.Equals(HeroLab_SavageWorlds.Format))
                     {
-                        xslt = Properties.Resources.HeroLab_SavageWorlds3;
-                        xsltPath = XsltPath + HeroLab_SavageWorlds3.Xslt;
+                        xslt = Properties.Resources.HeroLab_SavageWorlds;
+                        xsltPath = XsltPath + HeroLab_SavageWorlds.Xslt;
                     }
                     else if (SourceFormat.Equals(DDI.Format))
                     {
@@ -706,7 +706,7 @@ namespace CharacterConverter
             try
             {
                 Utility.CreateFileFromBytes(Properties.Resources.HeroLab_3_5E, XsltPath + HeroLab_3_5.Xslt, true);
-                Utility.CreateFileFromBytes(Properties.Resources.HeroLab_SavageWorlds3, XsltPath + HeroLab_SavageWorlds3.Xslt, true);
+                Utility.CreateFileFromBytes(Properties.Resources.HeroLab_SavageWorlds, XsltPath + HeroLab_SavageWorlds.Xslt, true);
                 Utility.CreateFileFromBytes(Properties.Resources.Dndi_4E, XsltPath + DDI.Xslt, true);
                 Utility.CreateFileFromBytes(Properties.Resources.PCGen_3_5E, XsltPath + PCGen.Xslt, true);
             }
@@ -1018,11 +1018,11 @@ namespace CharacterConverter
                     CharPath = DDI.CharPath;
                     DDI.CheckFile(input, errorMessage);
                 }
-                else if (SourceFormat.Equals(HeroLab_SavageWorlds3.Format))
+                else if (SourceFormat.Equals(HeroLab_SavageWorlds.Format))
                 {
-                    NamePath = HeroLab_SavageWorlds3.NamePath;
-                    CharPath = HeroLab_SavageWorlds3.CharPath;
-                    HeroLab_SavageWorlds3.CheckFile(input, errorMessage);
+                    NamePath = HeroLab_SavageWorlds.NamePath;
+                    CharPath = HeroLab_SavageWorlds.CharPath;
+                    HeroLab_SavageWorlds.CheckFile(input, errorMessage);
                 }
                 else if (SourceFormat.Equals(HeroLab_3_5.Format))
                 {
@@ -1138,7 +1138,7 @@ namespace CharacterConverter
                 var playerNodeNameList = new List<String>();
                 //Adds all of the nodes of one type for the 3.5E and Pathfinder rulesets
                 //based on module database location assumptions
-                if (DisplayRuleset.Equals(RS_35E.Name) || DisplayRuleset.Equals(RS_PF.Name) || DisplayRuleset.Equals(RS_SavageWorlds3.Name))
+                if (DisplayRuleset.Equals(RS_35E.Name) || DisplayRuleset.Equals(RS_PF.Name) || DisplayRuleset.Equals(RS_SavageWorlds.Name))
                 {
                     var paths = new List<string>();
                     if (DisplayRuleset.Equals(RS_35E.Name) || DisplayRuleset.Equals(RS_PF.Name))
@@ -1183,7 +1183,7 @@ namespace CharacterConverter
                         else if (type.Equals(ModuleManager.Equipment))
                             paths.Add("inventorylist/*");
                     }
-                    else if (DisplayRuleset.Equals(RS_SavageWorlds3.Name))
+                    else if (DisplayRuleset.Equals(RS_SavageWorlds.Name))
                     {
                         if (type.Equals(ModuleManager.SWSkills))
                             paths.Add("skilllist/*");
